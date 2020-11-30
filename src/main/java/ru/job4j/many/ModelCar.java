@@ -10,10 +10,14 @@ public class ModelCar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private BrandCar brand;
 
-    public static ModelCar of(String name) {
+    public static ModelCar of(String name, BrandCar brand) {
         ModelCar model = new ModelCar();
         model.name = name;
+        model.brand = brand;
         return model;
     }
 

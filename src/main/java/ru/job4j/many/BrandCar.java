@@ -12,7 +12,8 @@ public class BrandCar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "brand")
     private List<ModelCar> models = new ArrayList<>();
 
     public static BrandCar of(String name) {
@@ -35,6 +36,10 @@ public class BrandCar {
 
     public void addModel(ModelCar model) {
         this.models.add(model);
+    }
+
+    public List<ModelCar> getModels() {
+        return models;
     }
 
     @Override
